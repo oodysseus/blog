@@ -5,7 +5,7 @@ var dirName = process.argv[2]
 if (fs.existsSync(dirName)) {
 	console.log('Error : dir exists.')
 	
-	process.exit(2)
+	process.exit(1)
 }else{
 	fs.mkdirSync("./" + dirName)
 	process.chdir("./" + dirName)
