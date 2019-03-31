@@ -5,14 +5,48 @@ autoSetCanvasSize(canvas);
 listenToUser(canvas);
 
 var eraserEnabled = false;
+pen.onclick = function(){
+  eraserEnabled = false;
+  pen.classList.add('active');
+  eraser.classList.remove('active');
+};
 eraser.onclick = function(){
   eraserEnabled = true;
-  actions.className = "actions x";
+  eraser.classList.add('active');
+  pen.classList.remove('active');
 };
-brush.onclick = function(){
-  eraserEnabled = false;
-  actions.className = "actions";
-};
+
+black.onclick = function(){
+  context.strokeStyle = 'black';
+  black.classList.add('active');
+  red.classList.remove('active');
+  green.classList.remove('active');
+  blue.classList.remove('active');
+}
+
+red.onclick = function(){
+  context.strokeStyle = 'red';
+  black.classList.remove('active');
+  red.classList.add('active');
+  green.classList.remove('active');
+  blue.classList.remove('active');
+}
+
+green.onclick = function(){
+  context.strokeStyle = 'green';
+  black.classList.remove('active');
+  red.classList.remove('active');
+  green.classList.add('active');
+  blue.classList.remove('active');
+}
+
+blue.onclick = function(){
+  context.strokeStyle = 'blue';
+  black.classList.remove('active');
+  red.classList.remove('active');
+  green.classList.remove('active');
+  blue.classList.add('active');
+}
 
 
 function listenToUser(canvas){
@@ -22,7 +56,7 @@ function listenToUser(canvas){
   if(document.body.ontouchstart !== undefined){
     // 触屏设备
     canvas.ontouchstart = function(aaa){
-      console.log(aaa.touches[0])
+      //console.log(aaa.touches[0])
       var x = aaa.touches[0].clientX;
       var y = aaa.touches[0].clientY;
       using = true;
